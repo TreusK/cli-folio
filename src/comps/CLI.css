@@ -1,0 +1,38 @@
+.CLI {
+    border: solid 2px rgb(122, 122, 122);
+    height: 400px;
+    width: 80%;
+    min-width: 300px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+/* command line window top styles */
+
+.cliHead {
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(122, 122, 122);
+    color: black;
+}
+.headInfo, .headButtons {
+    display: flex;
+}
+
+.winBtn {
+    border: solid 2px lightgray;
+    text-align: center;
+    height: 20px;
+    width: 30px;
+}
+
+
+/* command line window body/content styles */
+
+.cliBody {
+    flex: 1;
+    background-color: black;
+    color: white;
+    overflow-y:scroll;
+}
