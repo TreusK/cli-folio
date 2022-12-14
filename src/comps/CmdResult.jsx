@@ -1,9 +1,9 @@
 import React from 'react';
 import './CmdResult.css';
 
-function CmdResult () {
+function CmdResult ({result}) {
     return (
-        <p>Hi Im result</p>
+        <p>{result}</p>
     )
 }
 

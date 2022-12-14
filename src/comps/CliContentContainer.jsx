@@ -4,11 +4,11 @@ import CmdResult from './CmdResult';
 
 import './CliContentContainer.css';
 
-function CliContentContainer ({isJustText, command, currentPath}) {
+function CliContentContainer ({isJustText, userInput, currentPath, result}) {
     return (
         <>
-            <BaseLine isJustText={isJustText} command={command} currentPath={currentPath} />
-            <CmdResult />
+            <BaseLine isJustText={isJustText} userInput={userInput} currentPath={currentPath} />
+            <CmdResult result={result}/>
         </>
     )
 }

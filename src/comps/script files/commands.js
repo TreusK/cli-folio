@@ -1,53 +1,48 @@
 function commandsModule() {
-    let cmd = '';
-    let argument = '';
-    let validCommands = ['cat', 'cd', 'mkdir', 'touch', 'ls', 'help'];
+    const validCommands = ['cat', 'cd', 'mkdir', 'touch', 'ls', 'help'];
 
     function checkPath(obj, currentPath) {
         const entirePath = currentPath.reduce((accumulator, elem) => accumulator[elem], obj);
         return entirePath;
     }
 
-    function analyzeCmd(str) {
-        cmd = str.trim().split(' ')[0];
-        argument = str.trim().split(' ')[1];
-    }
-
     function isItValidCmd() {
         return validCommands.includes(cmd);
     }
-    function isItAFolder(obj, path) {
-        return (typeof obj[path] === 'object') ? true : false;
+    function isItAFolder(obj, cmdArgument) {
+        return (typeof obj[cmdArgument] === 'object') ? true : false;
     }
-    function doesItExist(obj, path) {
-        return obj.hasOwnProperty(path)
+    function doesItExist(obj, cmdArgument) {
+        return obj.hasOwnProperty(cmdArgument)
     }
 
-    function pickCmdToRun(obj, currentPath, path) {
+    function pickCmdToRun(obj, currentPath, cmdArgument) {
         switch (cmd) {
-            case 'cd': return cmdCd(obj, currentPath, path);
+            case 'cd': return cmdCd(obj, currentPath, cmdArgument);
         }
     }
 
-    function cmdCd(obj, currentPath, path) {
+    function cmdCd(obj, currentPath, cmdArgument) {
         console.log(cmd, argument);
         let entirePath = checkPath(obj, currentPath);
-        if(doesItExist(entirePath, path)) {
-            if(isItAFolder(entirePath, path)) {
-                return [...currentPath, path];
+        if(doesItExist(entirePath, cmdArgument)) {
+            if(isItAFolder(entirePath, cmdArgument)) {
+                return [...currentPath, cmdArgument];
             }
-        } else if(path === '..') {
+        } else if(cmdArgument === '..') {
             return currentPath.slice(0, -1);
         }
         return currentPath;
     }
 
-    function cmdLs(obj) {
-        console.log(Object.keys(obj));
+    function cmdLs(obj, currentPath) {
+        let entirePath = checkPath(obj, currentPath);
+        let keys = Object.keys(entirePath);
+        return keys.map(elem => [elem, typeof entirePath[elem]]);
     }
 
 
-    return {analyzeCmd, cmdCd, cmdLs, isItAFolder, isItValidCmd, pickCmdToRun}
+    return {cmdCd, cmdLs, isItAFolder, isItValidCmd, pickCmdToRun}
 };
 
 let commands = commandsModule();
