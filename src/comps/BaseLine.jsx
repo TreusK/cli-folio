@@ -2,8 +2,8 @@ import {useState} from 'react';
 import './BaseLine.css'
 
 
-function BaseLine({isJustText, handleSubmit, userInput, currentPath}) {
-    let cPathCopy = [...currentPath];
+function BaseLine({isJustText, handleSubmit, userInput, path, result}) {
+    let cPathCopy = [...path];
     cPathCopy[0] = '~';
     let stringPath = cPathCopy.join('/');
     
@@ -27,13 +27,18 @@ function BaseLine({isJustText, handleSubmit, userInput, currentPath}) {
                 <span className='goldText'>{stringPath}</span></p>
 
             { isJustText 
-                ? <><span className='dollarSign'>$</span> <span>{userInput}</span></> 
-                : <><span className='dollarSign'>$</span> <input className='cliInput' 
+                ? <div>
+                    <span className='dollarSign'>$</span> <span>{userInput}</span>
+                    <div>{result}</div>
+                  </div> 
+                : <div>
+                    <span className='dollarSign'>$</span> <input className='cliInput' 
                         type='text' 
                         onChange={handleInputChange}
                         value={value}
                         onKeyDown={handleKeyDown} 
-                        autoFocus></input></>}
+                        autoFocus></input>
+                  </div>}
         </div>
             
     )}

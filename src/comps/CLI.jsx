@@ -1,6 +1,5 @@
 import {useState, useRef, useEffect} from 'react';
 import BaseLine from './BaseLine';
-import CliContentContainer from './CliContentContainer';
 
 import './CLI.css';
 import directoryTree from './script files/tree.js';
@@ -24,13 +23,16 @@ function CLI() {
     function handleSubmit(inputValue) {
         let [command, argument] = analyzeInput(inputValue);
         let nestedObj = checkPath(tree, currentPath);
-        let tempRes = 'hi';
+        let defaultRes = '';
+        let oldPath = [...currentPath];
         if(command === 'cd') {
             let [newPath, message] = commands.cdCmd(nestedObj, currentPath, argument);
-            tempRes = message;
+            defaultRes = message;
             setCurrentPath(newPath);
+        } else if(command === 'ls') {
+            
         }
-        let obj = {userInput: inputValue, result: tempRes}
+        let obj = {oldPath: oldPath, userInput: inputValue, result: defaultRes}
         setHistory(history => [...history, obj]);
     }
 
@@ -63,8 +65,8 @@ function CLI() {
             </div>
 
             <div className="cliBody">
-                {history.map(elem => <CliContentContainer isJustText={true} userInput={elem.userInput} currentPath={currentPath} result={elem.result}/>)}
-                <BaseLine isJustText={false} handleSubmit={handleSubmit} currentPath={currentPath}/>
+                {history.map(elem => <BaseLine isJustText={true} userInput={elem.userInput} path={elem.oldPath} result={elem.result}/>)}
+                <BaseLine isJustText={false} handleSubmit={handleSubmit} path={currentPath}/>
                 <div ref={cliRef} />
             </div>
     </div>
