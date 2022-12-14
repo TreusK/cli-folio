@@ -20,10 +20,17 @@ function CLI() {
         cliRef.current.scrollIntoView();
     }, [history])
 
-    //Function to save the values of the input on Enter in the history state, and reset input string
+    //Function to save the values of the input on Enter in the history state
     function handleSubmit(inputValue) {
         let [command, argument] = analyzeInput(inputValue);
-        let obj = {userInput: inputValue, result: 'im result'}
+        let nestedObj = checkPath(tree, currentPath);
+        let tempRes = 'hi';
+        if(command === 'cd') {
+            let [newPath, message] = commands.cdCmd(nestedObj, currentPath, argument);
+            tempRes = message;
+            setCurrentPath(newPath);
+        }
+        let obj = {userInput: inputValue, result: tempRes}
         setHistory(history => [...history, obj]);
     }
 
@@ -33,6 +40,12 @@ function CLI() {
         let cmd = strCopy[0];
         let arg = strCopy[1];
         return [cmd, arg];
+    }
+
+    //Function to make a copy (by reference but that doesn't matter) of the nested obj in Tree, to access its properties
+    function checkPath(obj, currentPath) {
+        const nestedObj = currentPath.reduce((accumulator, elem) => accumulator[elem], obj);
+        return nestedObj;
     }
     
   return (

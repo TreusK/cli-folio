@@ -16,23 +16,20 @@ function commandsModule() {
         return obj.hasOwnProperty(cmdArgument)
     }
 
-    function pickCmdToRun(obj, currentPath, cmdArgument) {
-        switch (cmd) {
-            case 'cd': return cmdCd(obj, currentPath, cmdArgument);
-        }
-    }
-
-    function cmdCd(obj, currentPath, cmdArgument) {
-        console.log(cmd, argument);
-        let entirePath = checkPath(obj, currentPath);
-        if(doesItExist(entirePath, cmdArgument)) {
-            if(isItAFolder(entirePath, cmdArgument)) {
-                return [...currentPath, cmdArgument];
+    function cdCmd(nestedObj, currentPath, cmdArgument) {
+        if(doesItExist(nestedObj, cmdArgument)) {
+            if(isItAFolder(nestedObj, cmdArgument)) {
+                return [[...currentPath, cmdArgument], ''];
+            } else {
+                return [currentPath, `bash: cd: ${cmdArgument}: Not a directory`];
             }
         } else if(cmdArgument === '..') {
-            return currentPath.slice(0, -1);
+            if(currentPath.length === 1) {
+                return [currentPath, ''];
+            }
+            return [currentPath.slice(0, -1), ''];
         }
-        return currentPath;
+        return [currentPath, `bash: cd: ${cmdArgument}: No such file or directory`];
     }
 
     function cmdLs(obj, currentPath) {
@@ -42,7 +39,7 @@ function commandsModule() {
     }
 
 
-    return {cmdCd, cmdLs, isItAFolder, isItValidCmd, pickCmdToRun}
+    return {cdCmd, cmdLs, isItAFolder, isItValidCmd, doesItExist}
 };
 
 let commands = commandsModule();
