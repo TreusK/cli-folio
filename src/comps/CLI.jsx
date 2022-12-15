@@ -23,14 +23,23 @@ function CLI() {
     function handleSubmit(inputValue) {
         let [command, argument] = analyzeInput(inputValue);
         let nestedObj = checkPath(tree, currentPath);
-        let defaultRes = '';
+        let defaultRes =[];
         let oldPath = [...currentPath];
         if(command === 'cd') {
             let [newPath, message] = commands.cdCmd(nestedObj, currentPath, argument);
-            defaultRes = message;
+            defaultRes = [message];
             setCurrentPath(newPath);
         } else if(command === 'ls') {
-            
+            let arr = commands.lsCmd(nestedObj, currentPath);
+            defaultRes = [...arr];
+        } else if(command === 'cat') {
+            let [newPath, message] = commands.catCmd(nestedObj, currentPath, argument);
+            defaultRes = [message];
+        } else if(command === 'help') {
+            defaultRes = ['cat', 'cd', 'clear', 'help', 'ls'];
+        } else if(command === 'clear') {
+            setHistory([]);
+            return;
         }
         let obj = {oldPath: oldPath, userInput: inputValue, result: defaultRes}
         setHistory(history => [...history, obj]);

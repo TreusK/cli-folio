@@ -32,14 +32,24 @@ function commandsModule() {
         return [currentPath, `bash: cd: ${cmdArgument}: No such file or directory`];
     }
 
-    function cmdLs(obj, currentPath) {
-        let entirePath = checkPath(obj, currentPath);
-        let keys = Object.keys(entirePath);
-        return keys.map(elem => [elem, typeof entirePath[elem]]);
+    function lsCmd(nestedObj, currentPath) {
+        let keys = Object.keys(nestedObj);
+        return keys.map(elem => [elem, typeof nestedObj[elem]]);
+    }
+
+    function catCmd(nestedObj, currentPath, cmdArgument) {
+        if(doesItExist(nestedObj, cmdArgument)) {
+            if(isItAFolder(nestedObj, cmdArgument)) {
+                return [currentPath, `cat: ${cmdArgument}: Is a directory`];
+            } else {
+                return [currentPath, nestedObj[cmdArgument]];
+            }
+        }
+        return [currentPath, `cat: ${cmdArgument}: No such file or directory`];
     }
 
 
-    return {cdCmd, cmdLs, isItAFolder, isItValidCmd, doesItExist}
+    return {cdCmd, lsCmd, catCmd, isItAFolder, isItValidCmd, doesItExist}
 };
 
 let commands = commandsModule();

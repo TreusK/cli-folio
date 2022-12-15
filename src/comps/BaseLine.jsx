@@ -29,7 +29,14 @@ function BaseLine({isJustText, handleSubmit, userInput, path, result}) {
             { isJustText 
                 ? <div>
                     <span className='dollarSign'>$</span> <span>{userInput}</span>
-                    <div>{result}</div>
+                    <div>{result.map(elem => {
+                        if(typeof elem === 'object') {
+                           return (elem[1]==='object') ? <p className='folder'>{elem[0]}/</p> : <p>{elem[0]}</p>
+                        } else {
+                            return <p>{elem}</p>
+                        }   
+                        })}
+                    </div>
                   </div> 
                 : <div>
                     <span className='dollarSign'>$</span> <input className='cliInput' 

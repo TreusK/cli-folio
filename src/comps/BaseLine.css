@@ -29,3 +29,7 @@
 .dollarSign {
     user-select: none;
 }
+
+.folder {
+    color: rgb(63, 63, 247);
+}
