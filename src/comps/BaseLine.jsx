@@ -8,6 +8,8 @@ function BaseLine({isJustText, handleSubmit, userInput, path, result}) {
     let stringPath = cPathCopy.join('/');
     
     const [value, setValue] = useState('');
+    const [arrowCmd, setArrowCmd] = useState(['']);
+    const [indexCount, setIndexCount] = useState(0);
 
     function handleInputChange(e) {
         setValue(e.target.value)
@@ -16,7 +18,16 @@ function BaseLine({isJustText, handleSubmit, userInput, path, result}) {
     function handleKeyDown(e) {
         if(e.key === 'Enter') {
             handleSubmit(value);
+            setArrowCmd(oldValue => [...oldValue, value]);
             setValue('');
+        } else if(e.key === 'ArrowUp') {
+            let copy = [...arrowCmd];
+            copy.reverse();
+            console.log(copy[indexCount]);
+            if(indexCount < arrowCmd.length) {
+                console.log({indexCount, arrow:arrowCmd.length});
+                setIndexCount(oldValue => oldValue+1)
+            }         
         }
     }
 

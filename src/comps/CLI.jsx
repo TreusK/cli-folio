@@ -41,7 +41,7 @@ function CLI() {
             setHistory([]);
             return;
         }
-        let obj = {oldPath: oldPath, userInput: inputValue, result: defaultRes}
+        let obj = {oldPath: oldPath, userInput: inputValue, result: defaultRes};
         setHistory(history => [...history, obj]);
     }
 
@@ -74,8 +74,13 @@ function CLI() {
             </div>
 
             <div className="cliBody">
-                {history.map(elem => <BaseLine isJustText={true} userInput={elem.userInput} path={elem.oldPath} result={elem.result}/>)}
-                <BaseLine isJustText={false} handleSubmit={handleSubmit} path={currentPath}/>
+                {history.map(elem => <BaseLine isJustText={true} 
+                                               userInput={elem.userInput} 
+                                               path={elem.oldPath} 
+                                               result={elem.result}/>)}
+                <BaseLine isJustText={false} 
+                          handleSubmit={handleSubmit} 
+                          path={currentPath}/>
                 <div ref={cliRef} />
             </div>
     </div>
