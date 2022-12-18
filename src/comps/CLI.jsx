@@ -36,7 +36,7 @@ function CLI() {
             let [newPath, message] = commands.catCmd(nestedObj, currentPath, argument);
             defaultRes = [message];
         } else if(command === 'help') {
-            defaultRes = ['cat', 'cd', 'clear', 'help', 'ls'];
+            defaultRes = ['cat cd clear ls help '];
         } else if(command === 'clear') {
             setHistory([]);
             return;

@@ -9,26 +9,48 @@ function BaseLine({isJustText, handleSubmit, userInput, path, result}) {
     
     const [value, setValue] = useState('');
     const [arrowCmd, setArrowCmd] = useState(['']);
-    const [indexCount, setIndexCount] = useState(0);
+    const [indexCount, setIndexCount] = useState(-1);
 
     function handleInputChange(e) {
         setValue(e.target.value)
     }
 
+    //handle Enter or arrow keys
     function handleKeyDown(e) {
         if(e.key === 'Enter') {
             handleSubmit(value);
             setArrowCmd(oldValue => [...oldValue, value]);
             setValue('');
-        } else if(e.key === 'ArrowUp') {
+            setIndexCount(-1);
+        } else if((e.key === 'ArrowUp') || (e.key === 'ArrowDown')) {
+            let pseudoState = 0;
+            if(e.key === 'ArrowUp') {
+                pseudoState = arrowUp();
+            } else {
+                pseudoState = arrowDown();
+            }
             let copy = [...arrowCmd];
             copy.reverse();
-            console.log(copy[indexCount]);
-            if(indexCount < arrowCmd.length) {
-                console.log({indexCount, arrow:arrowCmd.length});
-                setIndexCount(oldValue => oldValue+1)
-            }         
+            setValue(copy[pseudoState]);
         }
+    }
+
+    function arrowUp() {
+        let x = indexCount;
+        if(indexCount < arrowCmd.length-1) {   
+            setIndexCount(oldValue => oldValue+1);
+            return x+1;
+        }
+        return x;
+    }
+
+    function arrowDown() {
+        let x = indexCount;
+        if(indexCount > 0) {    
+            setIndexCount(oldValue => oldValue-1);
+            return x-1;
+        }
+        return x;
     }
 
     return (
