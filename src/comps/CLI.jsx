@@ -36,7 +36,7 @@ function CLI() {
             let [newPath, message] = commands.catCmd(nestedObj, currentPath, argument);
             defaultRes = [message];
         } else if(command === 'help') {
-            defaultRes = ['cat cd clear ls help '];
+            defaultRes = [' cat cd clear ls help '];
         } else if(command === 'clear') {
             setHistory([]);
             return;
@@ -77,7 +77,8 @@ function CLI() {
                 {history.map(elem => <BaseLine isJustText={true} 
                                                userInput={elem.userInput} 
                                                path={elem.oldPath} 
-                                               result={elem.result}/>)}
+                                               result={elem.result}
+                                               key={Math.random()*10}/>)}
                 <BaseLine isJustText={false} 
                           handleSubmit={handleSubmit} 
                           path={currentPath}/>

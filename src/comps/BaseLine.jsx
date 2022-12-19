@@ -64,9 +64,9 @@ function BaseLine({isJustText, handleSubmit, userInput, path, result}) {
                     <span className='dollarSign'>$</span> <span>{userInput}</span>
                     <div>{result.map(elem => {
                         if(typeof elem === 'object') {
-                           return (elem[1]==='object') ? <p className='folder'>{elem[0]}/</p> : <p>{elem[0]}</p>
+                           return (elem[1]==='object') ? <p className='folder' key={Math.random()*10}>{elem[0]}/</p> : <p key={Math.random()*10}>{elem[0]}</p>
                         } else {
-                            return <p>{elem}</p>
+                            return <p key={Math.random()*10}>{elem}</p>
                         }   
                         })}
                     </div>
