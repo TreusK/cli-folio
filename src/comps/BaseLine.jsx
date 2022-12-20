@@ -55,7 +55,7 @@ function BaseLine({isJustText, handleSubmit, userInput, path, result}) {
 
     return (
         <div className="BaseLine">
-            <p><span className='greenText'>meme@meme-PC</span> 
+            <p><span className='greenText'>flutri@user-PC</span> 
                 <span className='purpleText'>MINGW64</span> 
                 <span className='goldText'>{stringPath}</span></p>
 

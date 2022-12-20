@@ -2,6 +2,7 @@ import {useState, useRef, useEffect} from 'react';
 import BaseLine from './BaseLine';
 
 import './CLI.css';
+import bashIcon from '../images/git-bash.ico';
 import directoryTree from './script files/tree.js';
 import commands from './script files/commands.js';
 
@@ -36,7 +37,7 @@ function CLI() {
             let [newPath, message] = commands.catCmd(nestedObj, currentPath, argument);
             defaultRes = [message];
         } else if(command === 'help') {
-            defaultRes = [' cat cd clear ls help '];
+            defaultRes = commands.helpCmd();
         } else if(command === 'clear') {
             setHistory([]);
             return;
@@ -45,7 +46,7 @@ function CLI() {
         setHistory(history => [...history, obj]);
     }
 
-    //Function to analyze input value
+    //Function to analyze input value into command and argument
     function analyzeInput(str) {
         let strCopy = str.trim().split(/\s+/);
         let cmd = strCopy[0];
@@ -63,7 +64,7 @@ function CLI() {
     <div className="CLI">
       <div className="cliHead">
                 <div className="headInfo">
-                    <img className='headIcon' src="#" />
+                    <img className='headIcon' src={bashIcon} />
                     <p className="headDir">MINGW64:/c/Users/Me</p>
                 </div>
                 <div className="headButtons">

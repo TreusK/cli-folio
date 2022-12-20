@@ -13,20 +13,31 @@
 .cliHead {
     display: flex;
     justify-content: space-between;
-    background-color: rgb(122, 122, 122);
-    color: black;
+    background-color: rgb(56, 56, 56);
+    color: lightgray;
+    padding: 5px 3px;
+    font-family: Calibri, sans-serif;
+    user-select: none;
 }
 .headInfo, .headButtons {
     display: flex;
+    align-items: center;
 }
 
 .winBtn {
-    border: solid 2px lightgray;
-    text-align: center;
-    height: 20px;
+    display: flex;
+    border: solid 2px black;
     width: 30px;
+    height: 18px;
+    justify-content: center;
+    align-items: center;
 }
 
+.headIcon {
+    width: 15px;
+    height: 15px;
+    margin: 0 5px;
+}
 
 /* command line window body/content styles */
 

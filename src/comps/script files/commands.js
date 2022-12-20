@@ -1,14 +1,5 @@
 function commandsModule() {
-    const validCommands = ['cat', 'cd', 'mkdir', 'touch', 'ls', 'help'];
 
-    function checkPath(obj, currentPath) {
-        const entirePath = currentPath.reduce((accumulator, elem) => accumulator[elem], obj);
-        return entirePath;
-    }
-
-    function isItValidCmd() {
-        return validCommands.includes(cmd);
-    }
     function isItAFolder(obj, cmdArgument) {
         return (typeof obj[cmdArgument] === 'object') ? true : false;
     }
@@ -16,6 +7,7 @@ function commandsModule() {
         return obj.hasOwnProperty(cmdArgument)
     }
 
+    
     function cdCmd(nestedObj, currentPath, cmdArgument) {
         if(doesItExist(nestedObj, cmdArgument)) {
             if(isItAFolder(nestedObj, cmdArgument)) {
@@ -48,8 +40,12 @@ function commandsModule() {
         return [currentPath, `cat: ${cmdArgument}: No such file or directory`];
     }
 
+    function helpCmd() {
+        return [' cat cd clear ls help '];
+    }
 
-    return {cdCmd, lsCmd, catCmd, isItAFolder, isItValidCmd, doesItExist}
+
+    return {cdCmd, lsCmd, catCmd, helpCmd}
 };
 
 let commands = commandsModule();
