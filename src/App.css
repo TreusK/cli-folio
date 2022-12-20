@@ -1,11 +1,23 @@
 .App {
-    background-color: rgb(105, 160, 209);
+    background: rgb(0,0,0);
+    background: linear-gradient(177deg, rgba(0,0,0,1) 0%, rgba(15,15,82,1) 68%, rgba(22,78,115,1) 100%); 
     min-height: 100vh;
     width: 80%;
     margin: 0 auto;
 }
 
 .intro {
-    text-align: center;
-    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+}
+
+.intro h1 {
+    font-family: Righteous, sans-serif;
+}
+
+.intro h2 {
+    font-family: IBMPlex, sans-serif;
 }

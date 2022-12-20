@@ -1,7 +1,7 @@
 .CLI {
-    border: solid 2px rgb(122, 122, 122);
-    height: 400px;
-    width: 80%;
+    border: solid 4px rgb(56, 56, 56);
+    height: 450px;
+    width: 90%;
     min-width: 300px;
     margin: 0 auto;
     display: flex;
@@ -15,7 +15,7 @@
     justify-content: space-between;
     background-color: rgb(56, 56, 56);
     color: lightgray;
-    padding: 5px 3px;
+    padding: 3px 1px 7px 1px;
     font-family: Calibri, sans-serif;
     user-select: none;
 }
@@ -24,14 +24,30 @@
     align-items: center;
 }
 
+.headButtons {
+    gap: 1px;
+}
+
 .winBtn {
     display: flex;
-    border: solid 2px black;
+    border: solid 1px black;
     width: 30px;
     height: 18px;
     justify-content: center;
     align-items: center;
+    font-size: 0.5rem;
+    box-shadow: 0 0 1px darkgray;
+    color: lightgray;
 }
+
+.winBtn:hover {
+    color: white;
+}
+
+.closeBtn {
+    background-color: rgb(129, 37, 37);
+}
+
 
 .headIcon {
     width: 15px;
@@ -49,4 +65,5 @@
     font-family: 'VT323', sans-serif;
     font-size: 1rem;
     letter-spacing: 0.1rem;
+    padding: 5px;
 }

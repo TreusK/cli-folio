@@ -10,7 +10,11 @@ function CLI() {
     //-history- save past commands   -inputValue- duh   
     //-tree- object as pseudo directory tree  -currentPath- string to know current location in directory
     //-cliRef- div under the last BaseLine to autoscroll to
-    const [history, setHistory] = useState([]);
+    const [history, setHistory] = useState([{
+        oldPath: ['root', 'Desktop', 'cli-folio'],
+        userInput: "type help to see available commands",
+        result: [],
+    }]);
     const [tree, setTree] = useState(directoryTree);
     const [currentPath, setCurrentPath] = useState(['root', 'Desktop', 'cli-folio']);
     const cliRef = useRef();
@@ -68,7 +72,7 @@ function CLI() {
                     <p className="headDir">MINGW64:/c/Users/Me</p>
                 </div>
                 <div className="headButtons">
-                    <div className="winBtn minimizeBtn">-</div>
+                    <div className="winBtn minimizeBtn">–</div>
                     <div className="winBtn enlargeBtn">//</div>
                     <div className="winBtn closeBtn">X</div>
                 </div>

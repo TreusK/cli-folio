@@ -11,6 +11,22 @@
     src: local('VT323'), url('./fonts/VT323.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Righteous';
+    font-weight: 400;
+    font-style: normal;
+    src: local('Righteous'), url('./fonts/Righteous.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'IBMPlex';
+    font-weight: 400;
+    font-style: normal;
+    src: local('IBMPlex'), url('./fonts/IBMPlexMono-MediumItalic.ttf') format('truetype');
+}
+
 body {
     min-height: 100vh;
+    background-image: url('./images/htmlBg.jpg');
+    background-size: cover;
 }
