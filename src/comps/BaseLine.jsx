@@ -64,9 +64,11 @@ function BaseLine({isJustText, handleSubmit, userInput, path, result}) {
                     <span className='dollarSign'>$</span> <span>{userInput}</span>
                     <div>{result.map(elem => {
                         if(typeof elem === 'object') {
-                           return (elem[1]==='object') ? <p className='folder' key={Math.random()*10}>{elem[0]}/</p> : <p key={Math.random()*10}>{elem[0]}</p>
+                           return (elem[1]==='object') 
+                                ? <p className='folder' key={Math.random()*10}>{elem[0]}/</p> 
+                                : <p key={Math.random()*10}>{elem[0]}</p>
                         } else {
-                            return <p key={Math.random()*10}>{elem}</p>
+                            return <MiniLink key={Math.random()*10} str={elem} />
                         }   
                         })}
                     </div>
@@ -81,6 +83,28 @@ function BaseLine({isJustText, handleSubmit, userInput, path, result}) {
                   </div>}
         </div>
             
-    )}
+    )
+}
+
+//mini component to render anchor tags ( if the string includes [[ )
+//for example "check this out [[https://www.google.com/]] ((Woah!))" 
+//returns <p>check this out <a href='https://www.google.com/'>Woah!</a>
+function MiniLink({ str }) {
+    if(str.includes('[[')) {
+        let urlRegex = /\[\[(.*?)\]\]/;
+        let nameRegex = /\(\((.*?)\)\)/;
+        let url = str.match(urlRegex)[1];
+        let name = str.match(nameRegex)[1];
+
+        let cutIndex = str.indexOf('[');
+        let copy = str.slice(0, cutIndex);
+        return <p>{copy}<a href={url} target="_blank">{name}</a></p>
+    }
+    return(
+        <p>{str}</p>
+    )
+}
 
 export default BaseLine
+
+
