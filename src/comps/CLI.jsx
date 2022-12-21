@@ -47,7 +47,15 @@ function CLI() {
             return;
         }
         let obj = {oldPath: oldPath, userInput: inputValue, result: defaultRes};
-        setHistory(history => [...history, obj]);
+        setHistory(oldHistory => {
+            if (oldHistory.length > 12) {
+                let slicedHistory = [...oldHistory];
+                slicedHistory.shift();
+                return [...slicedHistory, obj];
+            } else {
+                return [...oldHistory, obj]
+            }
+        });
     }
 
     //Function to analyze input value into command and argument

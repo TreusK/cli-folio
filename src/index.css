@@ -27,6 +27,7 @@
 
 body {
     min-height: 100vh;
+    background: black;
     background-image: url('./images/htmlBg.jpg');
     background-size: cover;
 }
