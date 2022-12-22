@@ -98,10 +98,10 @@ function MiniLink({ str }) {
 
         let cutIndex = str.indexOf('[');
         let copy = str.slice(0, cutIndex);
-        return <p>{copy}<a href={url} target="_blank">{name}</a></p>
+        return <p className='breakText'>{copy}<a href={url} target="_blank">{name}</a></p>
     }
     return(
-        <p>{str}</p>
+        <p className='breakText'>{str}</p>
     )
 }
 

@@ -38,7 +38,7 @@ function CLI() {
             let arr = commands.lsCmd(nestedObj, currentPath);
             defaultRes = [...arr];
         } else if(command === 'cat') {
-            let [newPath, message] = commands.catCmd(nestedObj, currentPath, argument);
+            let message = commands.catCmd(nestedObj, currentPath, argument);
             defaultRes = [message];
         } else if(command === 'help') {
             defaultRes = commands.helpCmd();

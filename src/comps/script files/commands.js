@@ -32,16 +32,16 @@ function commandsModule() {
     function catCmd(nestedObj, currentPath, cmdArgument) {
         if(doesItExist(nestedObj, cmdArgument)) {
             if(isItAFolder(nestedObj, cmdArgument)) {
-                return [currentPath, `cat: ${cmdArgument}: Is a directory`];
+                return `cat: ${cmdArgument}: Is a directory`;
             } else {
-                return [currentPath, nestedObj[cmdArgument]];
+                return nestedObj[cmdArgument];
             }
         }
-        return [currentPath, `cat: ${cmdArgument}: No such file or directory`];
+        return `cat: ${cmdArgument}: No such file or directory`;
     }
 
     function helpCmd() {
-        return [' cat cd clear ls help '];
+        return ['cat  cd  clear  ls  help'];
     }
 
 

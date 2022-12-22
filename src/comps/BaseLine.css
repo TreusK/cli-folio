@@ -36,3 +36,7 @@
 .folder {
     color: rgb(101, 101, 238);
 }
+
+.breakText{
+    white-space: pre-wrap;
+}
