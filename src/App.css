@@ -22,3 +22,11 @@
 .intro h2 {
     font-family: IBMPlex, sans-serif;
 }
+
+a {
+    color: red;
+}
+
+a:visited {
+    color: orange;
+}

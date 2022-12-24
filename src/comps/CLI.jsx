@@ -11,12 +11,12 @@ function CLI() {
     //-tree- object as pseudo directory tree  -currentPath- string to know current location in directory
     //-cliRef- div under the last BaseLine to autoscroll to
     const [history, setHistory] = useState([{
-        oldPath: ['root', 'Desktop', 'cli-folio'],
+        oldPath: ['root'],
         userInput: "type help to see available commands",
         result: [],
     }]);
     const [tree, setTree] = useState(directoryTree);
-    const [currentPath, setCurrentPath] = useState(['root', 'Desktop', 'cli-folio']);
+    const [currentPath, setCurrentPath] = useState(['root']);
     const cliRef = useRef();
 
     //Scroll to the bottom of the CLI every time history changes 
