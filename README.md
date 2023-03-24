@@ -1,4 +1,4 @@
-## Command Line Interface-like Portfolio
+## CLI-like Portfolio
 
 Live: https://treusk.github.io/cli-folio/
 
