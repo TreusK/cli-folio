@@ -40,3 +40,8 @@
 .breakText{
     white-space: pre-wrap;
 }
+
+.blockLink {
+  display: block;
+  margin-left: 20px;
+}
