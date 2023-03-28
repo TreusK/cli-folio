@@ -55,6 +55,13 @@
     margin: 0 5px;
 }
 
+@media (min-width: 1400px) {
+  .CLI {
+    height: 700px;
+  }
+}
+
+
 /* command line window body/content styles */
 
 .cliBody {
