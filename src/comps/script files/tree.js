@@ -1,7 +1,6 @@
 let directoryTree = {
     root: {
-        Portfolio: {
-            Projects: {
+        Projects: {
                     "2do": `
 (Made using vanilla JS)
 
@@ -86,7 +85,6 @@ Links:
                         BookShop: `[[https://treusk.github.io/bookShopCart/]] ((Live - Book Shop))`,
                     }
                 },
-        },
         "aboutThis.txt": `
 A simple CLI to move around a directory tree with folders and text files, represented by 
 an object with nested objects and strings.
@@ -118,7 +116,7 @@ an object with nested objects and strings.
  You can reach me at flutri@protonmail.com
  Or check my github page over [[https://github.com/TreusK]] ((Here))
 `,
-    }
+  }
 }
 
 export default directoryTree;
