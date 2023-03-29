@@ -30,19 +30,19 @@ function CLI() {
     let nestedObj = checkPath(tree, currentPath);
     let defaultRes = [];
     let oldPath = [...currentPath];
-    if (command === 'cd') {
+    if (command.toLowerCase() === 'cd' ) {
       let [newPath, message] = commands.cdCmd(nestedObj, currentPath, argument);
       defaultRes = [message];
       setCurrentPath(newPath);
-    } else if (command === 'ls') {
+    } else if (command.toLowerCase() === 'ls') {
       let arr = commands.lsCmd(nestedObj, currentPath);
       defaultRes = [...arr];
-    } else if (command === 'cat') {
+    } else if (command.toLowerCase() === 'cat') {
       let message = commands.catCmd(nestedObj, currentPath, argument);
       defaultRes = [message];
-    } else if (command === 'help') {
+    } else if (command.toLowerCase() === 'help') {
       defaultRes = commands.helpCmd();
-    } else if (command === 'clear') {
+    } else if (command.toLowerCase() === 'clear') {
       setHistory([]);
       return;
     }
